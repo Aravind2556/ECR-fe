@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Medicneimage from '../../assets/undraw_medicine_hqqg.png';
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const apiurl = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     gender: "",
@@ -53,10 +55,17 @@ export const Register = () => {
       .then(res => res.json())
       .then(data => {
         alert(data.message);
+        if(data.success===true){
+          navigate('/')
+        }
+        else{
+          alert(data.message)
+        }
       })
       .catch(err => {
-        console.error("Error", err);
-        alert("Catch error");
+        alert("Trouble in connecting to the server, please try agaon later.")
+        console.error("Trouble in connecting to the server, please try agaon later.", err);
+        
       });
   };
 

@@ -37,7 +37,7 @@ export const Login = () => {
       .then(res=>res.json())
       .then(data=>{
         if(data.success === true){
-          alert(data.message)
+         
           navigate('/Dashboard')
         }
         else{
@@ -45,12 +45,9 @@ export const Login = () => {
         }
       })
       .catch(err=>{
-        console.log("Error",err)
-        alert("Catch error")
+        alert("Trouble in connecting to the server, please try agaon later.")
+        console.log("Trouble in connecting to the server, please try agaon later.",err)
       })
-    }
-    else{
-      alert("data value dont decleared")
     }
   };
 
@@ -111,4 +108,3 @@ export const Login = () => {
     </div>
   );
 };
-
