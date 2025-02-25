@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const apiurl = process.env.REACT_APP_API_URI
+  const apiurl = process.env.REACT_APP_API_URL
 
   function isLogout() {
+    console.log(`${apiurl}/logout`)
     fetch(`${apiurl}/logout`, {
       method: "GET",
-      credentials: 'include',
+      credentials: 'include'
     })
       .then(res => res.json())
       .then(data => {
