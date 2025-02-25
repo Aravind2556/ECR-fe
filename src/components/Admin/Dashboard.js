@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ApexCharts from "react-apexcharts"; // Make sure to install ApexCharts with `npm install react-apexcharts apexcharts`
+import EcgChart from "../EcgChart";
 
 export const Dashboard = () => {
   const apiurl = process.env.REACT_APP_API_URL
@@ -70,18 +71,22 @@ export const Dashboard = () => {
     },
   };
 
+
+
   return (
     <div className="container" >
       <h2 className="text-center my-4">ECG Data</h2>
 
         <div className="card p-4">
-          <ApexCharts
+          {/* <ApexCharts
             options={chartData.options}
             series={chartData.series}
             type="line"
             height={350}
-          />
+          /> */}
+          <EcgChart/>
         </div>
+
      
     </div>
   );
