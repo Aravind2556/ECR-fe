@@ -524,7 +524,7 @@ function EcgChart() {
         fetchData();
     
         // Optionally, set up polling for live data updates (e.g., every 30 seconds)
-        const intervalId = setInterval(fetchData, 5000);
+        const intervalId = setInterval(fetchData, 1000);
     
         return () => clearInterval(intervalId); // Cleanup on component unmount
     },[])
