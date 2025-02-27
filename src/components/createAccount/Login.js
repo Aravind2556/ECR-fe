@@ -36,7 +36,7 @@ export const Login = () => {
       .then(data=>{
         if(data.success === true){
          
-          navigate('/Dashboard')
+          window.location.href='/dashboard'
         }
         else{
           alert(data.message)

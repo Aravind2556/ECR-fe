@@ -18,7 +18,7 @@ const Navbar = () => {
         if (data.success) {
           setCurrentUser(data.user)
         } else {
-          setCurrentUser(null)
+          setCurrentUser({})
           console.log(data.message);
         }
       })
@@ -59,9 +59,13 @@ const Navbar = () => {
           ECG
         </a>
 
-        {currentUser ?
-          <button className="btn btn-dark" onClick={isLogout}> Logout</button>:
-          <button className="btn btn-dark" onClick={()=>window.location.href="/"}> Login</button>
+        {currentUser && 
+          (Object.entries(currentUser).length>0 &&
+          <button className="btn btn-dark" onClick={isLogout}> Logout</button>)
+        }
+        {currentUser&& 
+          (Object.entries(currentUser).length===0 &&
+          <button className="btn btn-dark" onClick={()=>window.location.href="/"}> Login</button>)
         }
 
       </div>
