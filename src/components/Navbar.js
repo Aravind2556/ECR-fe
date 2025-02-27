@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null)
 
   const apiurl = process.env.REACT_APP_API_URL
 
+  useEffect(()=>{
+    if(apiurl){
+      fetch(`${apiurl}/checkauth`, {
+        method: "GET",
+        credentials: 'include'
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setCurrentUser(data.user)
+        } else {
+          setCurrentUser(null)
+          console.log(data.message);
+        }
+      })
+      .catch(err => {
+        setCurrentUser(null)
+        alert("Trouble in connecting to the server, please try again later.")
+        console.log("Error in fetching current user:", err);
+      });
+    }
+  },[apiurl])
+
   function isLogout() {
-    console.log(`${apiurl}/logout`)
     fetch(`${apiurl}/logout`, {
       method: "GET",
       credentials: 'include'
@@ -16,7 +39,7 @@ const Navbar = () => {
       .then(data => {
         alert(data.message)
         if (data.success === true) {
-          navigate('/');
+          window.location.href="/"
         } else {
           console.log(data.message);
         }
@@ -27,6 +50,7 @@ const Navbar = () => {
       });
   }
 
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
       <div className="container">
@@ -35,7 +59,11 @@ const Navbar = () => {
           ECG
         </a>
 
-        <button className="btn btn-dark" onClick={isLogout}> Logout</button>
+        {currentUser ?
+          <button className="btn btn-dark" onClick={isLogout}> Logout</button>:
+          <button className="btn btn-dark" onClick={()=>window.location.href="/"}> Login</button>
+        }
+
       </div>
     </nav>
   );

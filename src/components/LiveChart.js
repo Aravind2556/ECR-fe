@@ -66,10 +66,11 @@ const CustomApexChart = ({ data, title, lineStyle, lineWidth, chartType, control
             align: 'left'
         },
         grid: {
-            row: {
-                colors: ['#f3f3f3', 'transparent'],
-                opacity: 0.5
-            }
+            // row: {
+            //     colors: ['#e6f6ff', 'transparent'],
+            //     opacity: 0.5
+            // }
+            show: false
         },
         xaxis: {
             type: 'datetime',
@@ -83,8 +84,20 @@ const CustomApexChart = ({ data, title, lineStyle, lineWidth, chartType, control
         }
     };
 
+    const containerStyle = {
+        width: "100%",
+        height: 400,
+        position: "relative",
+        // This creates a 20px x 20px grid with 1px gray lines
+        backgroundImage: `
+          linear-gradient(rgba(247, 23, 53, 0.2) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(247, 23, 53, 0.2) 1px, transparent 1px)
+        `,
+        backgroundSize: "10px 10px"
+    };
+
     return (
-        <div>
+        <div style={containerStyle}>
             <div id="chart">
                 <ReactApexChart key={chartType} options={options} series={series} height={350} type={chartType} width={"100%"}/>
             </div>

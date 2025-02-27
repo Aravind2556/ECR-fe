@@ -5,7 +5,6 @@ import EcgChart from "../EcgChart";
 export const Dashboard = () => {
   const apiurl = process.env.REACT_APP_API_URL
   const [ecgData, setEcgData] = useState([]);
-  console.log("Ecg data",ecgData)
 
 
   // Fetch ECG data from backend

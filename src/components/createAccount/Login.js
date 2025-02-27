@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Powermange from '../../assets/undraw_medicine_hqqg.png';
+import Powermange from '../../assets/undraw_medicine_hqqg.svg';
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
@@ -12,7 +12,6 @@ export const Login = () => {
     
   });
 
-  console.log("form data for create account",formData)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +23,6 @@ export const Login = () => {
     e.preventDefault();
 
     if(formData){
-      console.log("formData:",formData)
       fetch(`${apiurl}/Login-User`,{
         method : 'POST',
         headers : {
@@ -96,9 +94,9 @@ export const Login = () => {
 
           {/* Links */}
           <div className="d-flex justify-content-between">
-            <a href="#forgot-password" className="text-decoration-none">
+            {/* <a href="#forgot-password" className="text-decoration-none">
               Forgot Password?
-            </a>
+            </a> */}
             <a href="/create-account" className="text-decoration-none">
               Create Account
             </a>

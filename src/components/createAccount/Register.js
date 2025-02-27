@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Medicneimage from '../../assets/undraw_medicine_hqqg.png';
+import Medicneimage from '../../assets/undraw_medicine_hqqg.svg';
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
