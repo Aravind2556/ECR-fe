@@ -492,7 +492,7 @@ function EcgChart() {
     useEffect(()=>{
         const fetchData = async () => {
 
-            const url = "https://api.thingspeak.com/channels/2857871/feeds.json?api_key=PXELBS56OL8JHTZH";
+            const url = "https://api.thingspeak.com/channels/2858136/feeds.json?api_key=TPPHIG5TVQRWTWV3";
     
     
             fetch(url)
