@@ -5,8 +5,8 @@ const CustomApexChart = ({ data, title, lineStyle, lineWidth, chartType, control
     // Convert each data object into a series object expected by ApexCharts.
     const series = data.map((serie) => {
         // Get only the last 20 items from both x-axis and y-axis
-        const last20X = serie["x-axis"].slice(-100);
-        const last20Y = serie["y-axis"].slice(-100);
+        const last20X = serie["x-axis"].slice(-200);
+        const last20Y = serie["y-axis"].slice(-200);
     
         // Ensure the data is sorted by x value (if not already)
         const seriesData = last20X.map((x, i) => ({
